@@ -5,8 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String name = "John";
-
         Book book1 = new Book(1,"Strangers: A Memoir of Marriage","0593733312",false);
         Book book2 = new Book(2,"Project Hail Mary: A Novel","0593135202",false);
         Book book3 = new Book(3,"The Correspondent","0593798430",false);
@@ -20,31 +18,54 @@ public class Main {
 
         Book[] books = {book1,book2,book3,book4,book5,book6,book7,book8,book9,book10};
 
-        book2.isCheckedOut();
+        while (true) {
+            System.out.print("""
+            Welcome to the library Please Select an option
+            (A)Show available books
+            (C)Show checked out Books
+            (E)Exit application : """);
+            String menuA = scanner.nextLine();
 
-        displayData(books[3]);
-        displayData(book2);
+
+
+            if (menuA.equalsIgnoreCase("a")) {
+                System.out.println("Here are all available books");
+
+                for (Book book : books) {
+                    displayData(book);
+                }
+
+
+            }
+            else if (menuA.equalsIgnoreCase("c")) {
+
+                System.out.println("works");
+            }
+            else if (menuA.equalsIgnoreCase("e")) {
+
+                System.out.println("Exiting Program...");
+                System.exit(0);
+            }
+            else {
+                System.out.println("ERROR PICK OPTIONS ON SCREEN");
+            }
 
 
 
+        }
 
-
-
-        scanner.close();
     }
 
 
     public static void displayData(Book book){
-
-        System.out.println("Title: " + book.title);
-        System.out.println("Id: " + book.id);
-        System.out.println("ISBN-10: " + book.isbn);
-
         if (book.checkedOut){
-            book.setCheckedOut(name);
+            System.out.println();
         }
-        else{
-            System.out.println("In Stock");
+        else {
+            System.out.println("Title: " + book.title);
+            System.out.println("Id: " + book.id);
+            System.out.println("ISBN-10: " + book.isbn);
+        }
         }
     }
-}
+
