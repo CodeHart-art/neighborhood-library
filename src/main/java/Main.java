@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         Book book1 = new Book(1,"Strangers: A Memoir of Marriage","0593733312");
         Book book2 = new Book(2,"Project Hail Mary: A Novel","0593135202");
         Book book3 = new Book(3,"The Correspondent","0593798430");
@@ -12,5 +16,7 @@ public class Main {
         Book book10 = new Book(10,"Python Crash Course, 3rd Edition: A Hands-On, Project-Based Introduction to Programming","1718502702");
 
         Book[] books = {book1,book2,book3,book4,book5,book6,book7,book8,book9,book10};
+
+        book1.isCheckedOut();
     }
 }
