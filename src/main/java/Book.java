@@ -5,10 +5,9 @@ public class Book {
     boolean checkedOut;
     String checkedOutTo;
 
-    Book(int id,String isbn,String title,boolean checkedOut,String checkedOutTo){
+    Book(int id,String isbn,String title,boolean checkedOut){
         this.title = title;
         this.id = id;
-        this.checkedOutTo = checkedOutTo;
         this.isbn = isbn;
     }
     Book(int id,String title,String isbn){
@@ -21,6 +20,5 @@ public class Book {
     }
     public void isCheckedOut(){
         checkedOut = true;
-        System.out.println("is this working");
     }
 }
