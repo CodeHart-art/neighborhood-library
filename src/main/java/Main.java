@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-    public static String name = "John";
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -29,14 +28,37 @@ public class Main {
 
 
             if (menuA.equalsIgnoreCase("a")) {
-                System.out.println("Here are all available books");
 
+                System.out.println("Here are all available books");
                 for (Book book : books) {
+                    System.out.println("-----");
                     displayData(book);
+
+
+                }
+
+                System.out.print("Do you want to check out a Book(Y/N): ");
+
+                String menuB = scanner.nextLine();
+                if (menuB.equalsIgnoreCase("y")){
+                    System.out.print("Enter your name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter ID for book you want to check out: ");
+                    int bookID = scanner.nextInt();
+                    scanner.nextLine();
+
+                    for (Book book : books) {
+                        if (bookID == book.id){
+                            book.isCheckedOut();
+                            System.out.println(name + " checked out " + book.title);
+                        }
+                    }
                 }
 
 
             }
+
             else if (menuA.equalsIgnoreCase("c")) {
 
                 System.out.println("works");
