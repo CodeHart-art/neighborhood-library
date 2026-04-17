@@ -4,18 +4,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Book book1 = new Book(1,"Strangers: A Memoir of Marriage","0593733312",false);
-        Book book2 = new Book(2,"Project Hail Mary: A Novel","0593135202",false);
-        Book book3 = new Book(3,"The Correspondent","0593798430",false);
-        Book book4 = new Book(4,"Rites of the Starling","9781682816752",false);
-        Book book5 = new Book(5,"Dear Debbie","1464249628",false);
-        Book book6 = new Book(6,"The Night We Met","1538759225",false);
-        Book book7 = new Book(7,"Vigil", "0525509623",false);
-        Book book8 = new Book(8,"Dungeon Crawler Carl","059382024X",false);
-        Book book9 = new Book(9,"Cracking the Coding Interview: 189 Programming Questions and Solutions","0984782869",false);
-        Book book10 = new Book(10,"Python Crash Course, 3rd Edition: A Hands-On, Project-Based Introduction to Programming","1718502702",false);
+        Book book1 = new Book(1,"Strangers: A Memoir of Marriage","0593733312",false,"");
+        Book book2 = new Book(2,"Project Hail Mary: A Novel","0593135202",false,"");
+        Book book3 = new Book(3,"The Correspondent","0593798430",false,"");
+        Book book4 = new Book(4,"Rites of the Starling","9781682816752",false,"");
+        Book book5 = new Book(5,"Dear Debbie","1464249628",false,"");
+        Book book6 = new Book(6,"The Night We Met","1538759225",false,"");
+        Book book7 = new Book(7,"Vigil", "0525509623",false,"");
+        Book book8 = new Book(8,"Dungeon Crawler Carl","059382024X",false,"");
+        Book book9 = new Book(9,"Cracking the Coding Interview: 189 Programming Questions and Solutions","0984782869",false,"");
+        Book book10 = new Book(10,"Python Crash Course, 3rd Edition: A Hands-On, Project-Based Introduction to Programming","1718502702",false,"");
 
         Book[] books = {book1,book2,book3,book4,book5,book6,book7,book8,book9,book10};
+
 
         while (true) {
             System.out.print("""
@@ -32,7 +33,7 @@ public class Main {
                 System.out.println("Here are all available books");
                 for (Book book : books) {
                     System.out.println("-----");
-                    displayData(book);
+                    displayAvailable(book);
 
 
                 }
@@ -42,7 +43,7 @@ public class Main {
                 String menuB = scanner.nextLine();
                 if (menuB.equalsIgnoreCase("y")){
                     System.out.print("Enter your name: ");
-                    String name = scanner.nextLine();
+                     String name = scanner.nextLine();
 
                     System.out.print("Enter ID for book you want to check out: ");
                     int bookID = scanner.nextInt();
@@ -51,6 +52,7 @@ public class Main {
                     for (Book book : books) {
                         if (bookID == book.id){
                             book.isCheckedOut();
+                            book.name = name;
                             System.out.println(name + " checked out " + book.title);
                         }
                     }
@@ -60,8 +62,17 @@ public class Main {
             }
 
             else if (menuA.equalsIgnoreCase("c")) {
+                System.out.println("Here are checked out books: ");
 
-                System.out.println("works");
+                for (Book book : books){
+                    if (book.checkedOut){
+
+
+                    }
+                }
+
+
+
             }
             else if (menuA.equalsIgnoreCase("e")) {
 
@@ -77,9 +88,14 @@ public class Main {
         }
 
     }
+    public static void displayUnavailable(Book book){
+        System.out.println("Title: " + book.title);
+        System.out.println("Id: " + book.id);
+        System.out.println("ISBN-10: " + book.isbn);
+        System.out.println("Checked out by: " + book.name );
+    }
 
-
-    public static void displayData(Book book){
+    public static void displayAvailable(Book book){
         if (book.checkedOut){
             System.out.println();
         }
@@ -88,6 +104,7 @@ public class Main {
             System.out.println("Id: " + book.id);
             System.out.println("ISBN-10: " + book.isbn);
         }
+
         }
     }
 
