@@ -19,12 +19,14 @@ public class Main {
 
 
         while (true) {
+            System.out.println("--------");
             System.out.print("""
             Welcome to the library Please Select an option
             (A)Show available books
             (C)Show checked out Books
             (E)Exit application : """);
             String menuA = scanner.nextLine();
+
 
 
 
@@ -53,6 +55,7 @@ public class Main {
                         if (bookID == book.id){
                             book.isCheckedOut();
                             book.name = name;
+                            System.out.println("------");
                             System.out.println(name + " checked out " + book.title);
                         }
                     }
@@ -62,12 +65,30 @@ public class Main {
             }
 
             else if (menuA.equalsIgnoreCase("c")) {
-                System.out.println("Here are checked out books: ");
+
+                System.out.print("Here are checked out books: ");
 
                 for (Book book : books){
                     if (book.checkedOut){
+                        System.out.println("-----");
+                        System.out.println("Title: " + book.title);
+                        System.out.println("Id: " + book.id);
+                        System.out.println("ISBN-10: " + book.isbn);
+                        System.out.println("Checked out by: " + book.name );
+                    }
+                }
 
+                    System.out.println("Do you want to return a book (Y/N): ");
+                    String checkInOption = scanner.nextLine();
+                    if (checkInOption.equalsIgnoreCase("y")){
+                        System.out.print("Enter ID of book you wish to return: " );
+                        int bookId = scanner.nextInt();
+                        scanner.nextLine();
 
+                        for (Book book : books) {
+                            if (bookId == book.id) {
+                                book.isCheckedIn();
+                            }
                     }
                 }
 
@@ -88,16 +109,10 @@ public class Main {
         }
 
     }
-    public static void displayUnavailable(Book book){
-        System.out.println("Title: " + book.title);
-        System.out.println("Id: " + book.id);
-        System.out.println("ISBN-10: " + book.isbn);
-        System.out.println("Checked out by: " + book.name );
-    }
 
     public static void displayAvailable(Book book){
         if (book.checkedOut){
-            System.out.println();
+            System.out.print("");
         }
         else {
             System.out.println("Title: " + book.title);

@@ -15,4 +15,7 @@ public class Book {
     public void isCheckedOut(){
         checkedOut = true;
     }
+    public void isCheckedIn(){
+        checkedOut = false;
+    }
 }
